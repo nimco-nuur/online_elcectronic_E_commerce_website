@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electronics Shop | ElectroSom</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo"><a href="index.html">Electro<span>Som</span></a></div>
+
+            <div class="search-wrapper">
+                <input type="text" placeholder="Search ACs, TVs, Mobiles or Appliances...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+
+            <div class="nav-actions">
+                <div class="cart-icon">
+                    <i class="fas fa-shopping-basket"></i>
+                    <span class="count">0</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SHOP -->
+    <div class="shop-wrapper container">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="filter-box">
+                <h3>Categories</h3>
+                <ul class="cat-list">
+                    <li class="active">All Products</li>
+                    <li>Air Conditioners</li>
+                    <li>Kitchen Appliances</li>
+                    <li>Smartphones</li>
+                    <li>Smart TVs</li>
+                    <li>Refrigerators</li>
+                </ul>
+            </div>
+
+            <div class="filter-box">
+                <h3>Price Range</h3>
+                <input type="range" class="price-slider">
+                <div class="price-tags">
+                    <span>$10</span>
+                    <span>$3000</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            <header class="shop-top-bar">
+                <h2>All Products <span>(48)</span></h2>
+                <select class="sort-dropdown">
+                    <option>Newest First</option>
+                    <option>Price: Low to High</option>
+                </select>
+            </header>
+
+            <!-- PRODUCTS GRID -->
+            <div class="compact-grid">
+
+                <div class="mini-card">
+                    <div class="img-area">
+                        <img src="/images/ac.jpg" alt="AC">
+                        <span class="tag-new">New</span>
+                    </div>
+                    <div class="card-info">
+                        <span class="sub-cat">Cooling</span>
+                        <h4>Split AC 1.5 Ton</h4>
+                        <div class="price-action">
+                            <span class="price">$450</span>
+                            <button class="add-btn"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <div class="img-area">
+                        <img src="/images/last.jpg" alt="Blender">
+                    </div>
+                    <div class="card-info">
+                        <span class="sub-cat">Kitchen</span>
+                        <h4>Electric Juice Maker</h4>
+                        <div class="price-action">
+                            <span class="price">$85</span>
+                            <button class="add-btn"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <div class="img-area">
+                        <img src="/images/smart tv.avif" alt="Smart TV">
+                    </div>
+                    <div class="card-info">
+                        <span class="sub-cat">Entertainment</span>
+                        <h4>Samsung 55&quot; 4K Smart TV</h4>
+                        <div class="price-action">
+                            <span class="price">$520</span>
+                            <button class="add-btn"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <div class="img-area">
+                        <img src="/images/iphon15pro.avif" alt="iPhone">
+                    </div>
+                    <div class="card-info">
+                        <span class="sub-cat">Mobiles</span>
+                        <h4>iPhone 15 Pro Max</h4>
+                        <div class="price-action">
+                            <span class="price">$1,299</span>
+                            <button class="add-btn"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <div class="img-area">
+                        <img src="/images/fridges.jpg" alt="Fridge">
+                    </div>
+                    <div class="card-info">
+                        <span class="sub-cat">Kitchen</span>
+                        <h4>Double Door Refrigerator</h4>
+                        <div class="price-action">
+                            <span class="price">$850</span>
+                            <button class="add-btn"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mini-card">
+                    <div class="img-area">
+                        <img src="/images/washing_mashine.jpg" alt="Washer">
+                    </div>
+                    <div class="card-info">
+                        <span class="sub-cat">Home Appliances</span>
+                        <h4>Front Load Washing Machine</h4>
+                        <div class="price-action">
+                            <span class="price">$390</span>
+                            <button class="add-btn"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>
