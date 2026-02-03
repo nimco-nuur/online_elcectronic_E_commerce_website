@@ -11,11 +11,18 @@
 </head>
 <body>
       <nav class="navbar">
+ 
+</div>
         <div class="nav-container">
-            <div class="logo"><a href="index.html">Electro<span>Som</span></a></div>
+     <div class="logo">
+            <a href="#">
+                <i class="fas fa-bolt"></i> Electro<span>Som</span>
+            </a>
+        </div>         <div class="mobile-menu-icon" id="mobile-menu-btn">
+    <i class="fas fa-bars"></i>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="categories.html">About Us</a></li>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../pages/about.html">About Us</a></li>
             </ul>
         </div>
     </nav>
@@ -100,6 +107,24 @@
         <p>Regions Covered</p>
     </div>
 </section>
+
+
+<script>
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    const navIcons = document.querySelector('.nav-icons');
+
+    menuBtn.addEventListener('click', () => {
+        // Toggle 'active' class si menu-ka u soo muuqdo ama u qarsoomo
+        navLinks.classList.toggle('active');
+        navIcons.classList.toggle('active');
+        
+        // Bedel icon-ka (ka dhig 'X' marka uu furanyahay)
+        const icon = menuBtn.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+    });
+</script>
 
 </body>
 </html>
