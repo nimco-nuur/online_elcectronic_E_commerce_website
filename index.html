@@ -20,6 +20,9 @@
                 <i class="fas fa-bolt"></i> Electro<span>Som</span>
             </a>
         </div>
+        <div class="mobile-menu-icon" id="mobile-menu-btn">
+    <i class="fas fa-bars"></i>
+</div>
 
         <ul class="nav-links">
             <li><a href="#">Home</a></li>
@@ -63,7 +66,7 @@
         </p>
 
         <div class="hero-btns">
-            <a href="shop.html" class="btn-primary">Shop Now</a>
+            <a href="./pages/shop.html" class="btn-primary">Shop Now</a>
             <a href="pages/about.html" class="btn-secondary">Learn More</a>
         </div>
     </div>
@@ -104,7 +107,7 @@
         <div class="product-card">
             <div class="product-badge">Top Rated</div>
             <div class="img-box">
-                <img src="images/iphon15.jpg" alt="iPhone 15 Pro">
+                <img src="images/iphon17pro.png" alt="iPhone 15 Pro">
                 <div class="overlay-actions">
                     <button title="Add to Wishlist"><i class="far fa-heart"></i></button>
                     <button title="Quick View"><i class="fas fa-expand"></i></button>
@@ -204,7 +207,7 @@
     </div>
 
     <div class="category-wrapper">
-        <a href="phones.html" class="cat-item">
+        <a href="/pages/phones.html" class="cat-item">
             <div class="cat-img-container">
                 <img src="images/smart_phones.png" alt="Smartphones">
             </div>
@@ -212,7 +215,7 @@
             <p>150+ Products</p>
         </a>
 
-        <a href="laptops.html" class="cat-item">
+        <a href="/pages/laptops.html" class="cat-item">
             <div class="cat-img-container">
                 <img src="images/laptops.png" alt="Laptops">
             </div>
@@ -220,9 +223,9 @@
             <p>85+ Products</p>
         </a>
 
-        <a href="audio.html" class="cat-item">
+        <a href="./pages/audio.html" class="cat-item">
             <div class="cat-img-container">
-                <img src="images/audio.jpg" alt="Audio">
+                <img src="images/audio.png" alt="Audio">
             </div>
             <h3>Audio & Music</h3>
             <p>120+ Products</p>
@@ -236,22 +239,29 @@
             <p>60+ Products</p>
         </a>
 
-        <a href="gaming.html" class="cat-item">
+        <a href="pages/kichen.html" class="cat-item">
+            <div class="cat-img-container">
+                <img src="images/kichen.jpg" alt="Gaming">
+            </div>
+            <h3>Kitchen Appliances </h3>
+            <p>45+ Products</p>
+        </a>
+    <a href="pages/Gaming.html" class="cat-item">
             <div class="cat-img-container">
                 <img src="images/gaming.png" alt="Gaming">
             </div>
-            <h3>Gaming Gear</h3>
+            <h3>Gaming Equipments </h3>
             <p>45+ Products</p>
         </a>
 
-        <a href="accessories.html" class="cat-item">
+        <!-- <a href="accessories.html" class="cat-item">
             <div class="cat-img-container">
                 <img src="images/acessors.jpg" alt="Accessories">
             </div>
             <h3>Accessories</h3>
             <p>200+ Products</p>
         </a>
-    </div>
+    </div> -->
 </section>
 <!-- --------------about -->
 <section class="about-hero">
@@ -360,12 +370,13 @@
             <div class="auth-check">
                 <label><input type="checkbox" required> I agree to terms</label>
             </div>
+            <a href="../index.html" class="auth-btn">Create Account</a>
 
-            <button type="submit" class="auth-btn">Create Account</button>
+
         </form>
 
         <div class="auth-footer">
-            <p>Already have an account? <a href="/login.html">Login</a></p>
+            <p>Already have an account? <a href="pages/login.htm">Login</a></p>
         </div>
     </div>
 </div>
@@ -492,6 +503,24 @@
         <p>&copy; 2026 <strong>ElectroSom</strong>. Built with ❤️ for Somalia.</p>
     </div>
 </footer>
+
+
+<script>
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    const navIcons = document.querySelector('.nav-icons');
+
+    menuBtn.addEventListener('click', () => {
+        // Toggle 'active' class si menu-ka u soo muuqdo ama u qarsoomo
+        navLinks.classList.toggle('active');
+        navIcons.classList.toggle('active');
+        
+        // Bedel icon-ka (ka dhig 'X' marka uu furanyahay)
+        const icon = menuBtn.querySelector('i');
+        icon.classList.toggle('fa-bars');
+        icon.classList.toggle('fa-times');
+    });
+</script>
 
 </body>
 </html>

@@ -12,6 +12,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    text-decoration: none;
 
 }
 
@@ -155,9 +156,20 @@
     background: linear-gradient(to right, rgba(15, 12, 41, 0.8), rgba(0, 78, 146, 0.4));
 }
 
-.hero-content { position: relative; z-index: 1; max-width: 800px; padding: 0 20px; }
-.tagline { color: var(--primary); text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
-.hero-content h1 { font-size: 4rem; margin: 1rem 0; line-height: 1.2; }
+.hero-content { position: relative;
+     z-index: 1; 
+     max-width: 800px; 
+     padding: 0 20px; }
+.tagline { 
+    color: var(--primary);
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    font-weight: 600; }
+.hero-content h1 {
+     font-size: 4rem; 
+     margin: 1rem 0; 
+     line-height: 1.2; 
+    }
 .hero-content h1 span { color: var(--primary); }
 .hero-btns { margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; }
 
@@ -464,7 +476,7 @@
         height: 120px;
     }
 }
-/* about */
+/* about page */
 
 /* --- Global Styles --- */
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
@@ -628,16 +640,18 @@ body { background: #fff; line-height: 1.6; color: #333; }
 .form-options a { color: #00d2ff; text-decoration: none; font-weight: 500; }
 
 .login-btn {
+    display: inline-block;
     width: 100%;
     padding: 14px;
     background: #00d2ff;
-    border: none;
     border-radius: 12px;
     color: #1a1a2e;
     font-weight: 700;
     font-size: 1rem;
     cursor: pointer;
     transition: 0.4s;
+    text-align: center;
+    text-decoration: none; /* underline ka saar */
 }
 
 .login-btn:hover { 
@@ -645,6 +659,7 @@ body { background: #fff; line-height: 1.6; color: #333; }
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0, 210, 255, 0.3);
 }
+
 
 .login-footer { margin-top: 30px; font-size: 0.85rem; color: #aaa; }
 .login-footer a { color: #00d2ff; text-decoration: none; font-weight: 600; }
@@ -722,6 +737,7 @@ body { background: #fff; line-height: 1.6; color: #333; }
 
 /* Button Styling */
 .signup-page-container .auth-btn {
+    display: block;
     width: 100%;
     padding: 14px;
     background: #00d2ff;
@@ -732,12 +748,15 @@ body { background: #fff; line-height: 1.6; color: #333; }
     cursor: pointer;
     margin-top: 10px;
     transition: 0.3s;
+    text-align: center;
+    text-decoration: none;
 }
 
 .signup-page-container .auth-btn:hover {
     background: #fff;
     transform: translateY(-2px);
 }
+
 
 /* Footer & Links */
 .signup-page-container .auth-footer {
@@ -760,7 +779,7 @@ body { background: #fff; line-height: 1.6; color: #333; }
 /* contact */
 
 
-/* Container-ka ugu weyn */
+/* Container-ka*/
 .contact-page-wrapper {
     padding: 80px 20px;
     background-color: #f4f7f6;
@@ -1346,18 +1365,7 @@ body { background: #fff; line-height: 1.6; color: #333; }
 /* shop */
 
 /* General Style */
-:root {
-    --primary: #00d2ff;
-    --dark: #1a1a2e;
-    --bg: #f4f7f6;
-    --white: #ffffff;
-}
 
-body {
-    background-color: var(--bg);
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-}
 
 .container {
     max-width: 1300px;
@@ -1534,4 +1542,212 @@ body {
 @media (max-width: 768px) {
     .shop-wrapper { grid-template-columns: 1fr; }
     .sidebar { display: none; }
+}
+
+
+/* Marka hore qari icon-ka menu-ga (Desktop ahaan) */
+.mobile-menu-icon {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+    color: white;
+}
+
+/* --- RESPONSIVE DESIGN (Shashadaha yaryar) --- */
+@media screen and (max-width: 968px) {
+    .mobile-menu-icon {
+        display: block; /* Halkan ayuu ka soo muuqanayaa */
+    }
+
+    .nav-links, .nav-icons, .search-box {
+        display: none; /* Qari dhammaan qaybahan marka hore */
+    }
+
+    /* Marka la gujiyo badanka, halkan ayaan ku tusi doonaa menu-ka */
+    .nav-links.active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--dark);
+        padding: 20px 0;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+    }
+
+    .nav-icons.active {
+        display: flex;
+        justify-content: center;
+        padding-bottom: 20px;
+        background: var(--dark);
+        position: absolute;
+        top: 350px; /* Isku hagaaji halka uu dhacayo */
+        width: 100%;
+    }
+
+    /* Hero h1 ha yaraado si uu mobile ugu haboonaado */
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+}
+
+
+@media screen and (max-width: 968px) {
+    /* --- HERO SECTION RESPONSIVE --- */
+    .hero-content h1 {
+        font-size: 2.8rem; /* Inyar ayaa la yareeyay */
+    }
+
+    .hero-btns {
+        flex-direction: column; /* Badhamada midba midka kale ha ka hooseeyo */
+        align-items: center;
+    }
+
+    .btn-primary, .btn-secondary {
+        width: 80%; /* Badhamada ha weynaadaan mobile-ka */
+        text-align: center;
+    }
+
+    /* --- FEATURES SECTION RESPONSIVE --- */
+    .features {
+        flex-direction: column; /* Kaararka ha isku dhex jireen, midba mid ha ka hooseeyo */
+        align-items: center;
+        margin-top: 20px; /* Inyar kor looga soo riixay si aysan u dhex gelin sawirka hero-ga */
+        gap: 1.5rem;
+    }
+
+    .feature-card {
+        max-width: 90%; /* Kaarku balaca shashada ha qaato */
+        width: 100%;
+    }
+
+    /* --- PRODUCTS HEADER --- */
+    .section-header h2 {
+        font-size: 2rem;
+    }
+}
+
+/* Shashadaha aadka u yaryar (Phones) */
+@media screen and (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+    
+    .tagline {
+        font-size: 0.8rem;
+    }
+}
+
+/* --- FOOTER MAIN STYLING --- */
+.main-footer-wrapper {
+    background: var(--dark);
+    color: white;
+    padding: 60px 0 20px;
+}
+
+.footer-container {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Tani waa muhiim si uu u jabo */
+    gap: 30px;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 250px; /* Waxay ka horjoogsanaysaa inay aad u yaradaan */
+}
+
+.footer-logo span {
+    color: var(--primary);
+}
+
+.footer-col h3 {
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    position: relative;
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+    color: #ccc;
+    transition: var(--transition);
+}
+
+.footer-col ul li a:hover {
+    color: var(--primary);
+    padding-left: 5px;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.footer-socials a {
+    color: white;
+    background: rgba(255,255,255,0.1);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.footer-socials a:hover {
+    background: var(--primary);
+    transform: translateY(-5px);
+}
+
+.contact-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    color: #ccc;
+}
+
+.footer-bottom-bar {
+    text-align: center;
+    padding-top: 40px;
+    margin-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.9rem;
+}
+
+/* --- RESPONSIVE FOOTER (Mobile) --- */
+@media screen and (max-width: 768px) {
+    .footer-container {
+        flex-direction: column; /* Columns-ka midba midka kale ha ka hooseeyo */
+        text-align: center;
+    }
+
+    .footer-socials {
+        justify-content: center; /* Baraha bulshada bartamaha keen */
+    }
+
+    .contact-link {
+        justify-content: center; /* Macluumaadka xiriirka bartamaha keen */
+    }
+    
+    .footer-col {
+        min-width: 100%; /* Mid kasta ha qaato balaca oo dhan */
+    }
 }

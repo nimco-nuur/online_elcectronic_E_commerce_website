@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="so">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitchen Appliances - ElectroSom</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS GOONI AH */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f0faff; /* Midab buluug aad u khafiif ah */
+        }
+
+        /* Navbar */
+        .navbar {
+            background: #001f3f; /* Buluug madow oo xarrago leh */
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo span {
+            color: #00d4ff; /* Midabka Cyan-ka ah ee aad codsatay */
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 400;
+            transition: 0.3s;
+        }
+
+        .nav-links a.active, .nav-links a:hover {
+            color: #00d4ff;
+        }
+
+  
+
+        .glow-text {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px rgba(0, 212, 255, 0.7);
+            color: #ffffff;
+        }
+
+        .header-line {
+            width: 100px;
+            height: 5px;
+            background: #00d4ff; /* Khadka midabka buluugga ah */
+            margin: 15px auto;
+            border-radius: 10px;
+        }
+
+        /* Product Grid */
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* Product Card */
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 212, 255, 0.1);
+            transition: 0.4s;
+            position: relative;
+            border: 1px solid #e0f7ff;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px);
+            border-color: #00d4ff;
+        }
+
+        .badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 5px 15px;
+            border-radius: 20px;
+            color: white;
+            font-size: 0.8rem;
+            font-weight: bold;
+            z-index: 10;
+        }
+
+        .badge.new { background: #00d4ff; }
+        .badge.promo { background: #ff4b2b; }
+
+        .img-box {
+            width: 100%;
+            height: 280px;
+            position: relative;
+            overflow: hidden;
+            background: #f9f9f9;
+        }
+
+        .img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Tani waxay ka dhigaysaa sawirka qalabka mid si fiican u muuqda */
+            padding: 20px;
+            transition: 0.5s;
+        }
+
+        .product-card:hover .img-box img {
+            scale: 1.1;
+        }
+
+        .quick-view {
+            position: absolute;
+            bottom: -50px;
+            width: 100%;
+            background: rgba(0, 212, 255, 0.9);
+            color: white;
+            text-align: center;
+            padding: 12px;
+            transition: 0.3s;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .product-card:hover .quick-view {
+            bottom: 0;
+        }
+
+        .details {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .brand {
+            color: #00d4ff;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+        }
+
+        .details h3 {
+            margin: 10px 0;
+            font-size: 1.25rem;
+            color: #001f3f;
+        }
+
+        .rating {
+            color: #f1c40f;
+            margin-bottom: 12px;
+        }
+
+        .price {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #001f3f;
+            margin-bottom: 20px;
+        }
+
+        .cart-btn {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #00d4ff;
+            background: transparent;
+            color: #00d4ff;
+            border-radius: 30px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .cart-btn:hover {
+            background: #00d4ff;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
+        }
+
+        .cart-btn i {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo"><a href="#">Electro<span>Som</span></a></div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Categories</a></li>
+            <li><a href="#" class="active">Kitchen</a></li>
+        </ul>
+    </nav>
+
+ 
+
+    <section class="container">
+        <div class="product-grid">
+            
+            <div class="product-card">
+                <div class="badge new">New</div>
+                <div class="img-box">
+                    <img src="../images/Nespresso.png" alt="Coffee Maker">
+                    <div class="quick-view"><i class="fas fa-search"></i> Quick View</div>
+                </div>
+                <div class="details">
+                    <span class="brand">Nespresso</span>
+                    <h3>Vertuo Coffee Machine</h3>
+                    <div class="rating">
+                        <i class="fas fa-sta-r"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="price">$299.00</p>
+                    <button class="cart-btn"><i class="fas fa-shopping-basket"></i> Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="img-box">
+                    <img src="../images/ninja.png" alt="Air Fryer">
+                    <div class="quick-view"><i class="fas fa-search"></i> Quick View</div>
+                </div>
+                <div class="details">
+                    <span class="brand">Ninja</span>
+                    <h3>Ninja Professional Air Fryer</h3>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                    </div>
+                    <p class="price">$159.00</p>
+                    <button class="cart-btn"><i class="fas fa-shopping-basket"></i> Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="badge promo">-20%</div>
+                <div class="img-box">
+                    <img src="../images/Microwave.png" alt="Microwave">
+                    <div class="quick-view"><i class="fas fa-search"></i> Quick View</div>
+                </div>
+                <div class="details">
+                    <span class="brand">Samsung</span>
+                    <h3>Digital Smart Microwave</h3>
+                    <div class="rating">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="price">$210.00</p>
+                    <button class="cart-btn"><i class="fas fa-shopping-basket"></i> Add to Cart</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</body>
+</html>

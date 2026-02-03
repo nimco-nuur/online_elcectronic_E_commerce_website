@@ -3,160 +3,492 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Electronics Shop | ElectroSom</title>
+    <title>ElectroSom | Pro Electronics Shop</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00d2ff; /* Blue professional color */
+            --dark: #0f0c29;
+            --light-bg: #f8fafc;
+            --white: #ffffff;
+            --gray: #64748b;
+            --border: #e2e8f0;
+            --accent: #ef4444;
+        }
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            text-decoration: none;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark);
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            background: var(--dark);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .logo span { color: var(--primary); }
+
+        .search-wrapper {
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 5px 15px;
+            display: flex;
+            width: 50%;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .search-wrapper input {
+            background: transparent;
+            border: none;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            outline: none;
+        }
+
+        .search-wrapper button {
+            background: transparent;
+            border: none;
+            color: var(--gray);
+            cursor: pointer;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 20px;
+            color: white;
+            align-items: center;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            font-size: 1.4rem;
+        }
+
+        .count {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background: var(--primary);
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 50%;
+        }
+
+        /* --- LAYOUT --- */
+        .shop-container {
+            max-width: 1400px;
+            margin: 30px auto;
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 25px;
+            padding: 0 20px;
+        }
+
+        /* --- SIDEBAR --- */
+        .sidebar {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 25px;
+            height: fit-content;
+            border: 1px solid var(--border);
+        }
+
+        .sidebar h3 {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light-bg);
+            color: var(--dark);
+        }
+
+        .cat-list {
+            list-style: none;
+        }
+
+        .cat-list li {
+            padding: 12px 15px;
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--gray);
+        }
+        a{
+            color: var(--gray);
+        }
+
+        .cat-list li:hover {
+            background: var(--light-bg);
+            color: var(--primary);
+        }
+
+        .cat-list li.active {
+            background: var(--primary);
+            color: white;
+            font-weight: 500;
+        }
+
+        .price-filter {
+            margin-top: 30px;
+        }
+
+        .price-slider {
+            width: 100%;
+            margin: 15px 0;
+            accent-color: var(--primary);
+        }
+
+        .price-inputs {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* --- MAIN CONTENT --- */
+        .shop-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            background: var(--white);
+            padding: 15px 25px;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .shop-header h2 { font-size: 1.3rem; }
+        .shop-header span { color: var(--gray); font-size: 1rem; font-weight: 400; }
+
+        .sort-select {
+            padding: 8px 15px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            outline: none;
+            font-size: 0.9rem;
+        }
+
+        /* --- PRODUCT GRID --- */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            border-color: var(--primary);
+        }
+
+        .image-box {
+            height: 220px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        .image-box img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: 0.3s;
+        }
+
+        .product-card:hover .image-box img {
+            transform: scale(1.08);
+        }
+
+        .badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--accent);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .product-info {
+            padding: 20px;
+            border-top: 1px solid var(--light-bg);
+        }
+
+        .category-tag {
+            font-size: 0.75rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .product-info h4 {
+            font-size: 1rem;
+            margin-bottom: 12px;
+            color: var(--dark);
+            height: 45px;
+            overflow: hidden;
+            line-height: 1.4;
+        }
+
+        .footer-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price-tag {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark);
+        }
+
+        .add-cart-btn {
+            background: var(--light-bg);
+            color: var(--dark);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-card:hover .add-cart-btn {
+            background: var(--primary);
+            color: white;
+        }
+
+
+
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 992px) {
+            .shop-container { grid-template-columns: 1fr; }
+            .sidebar { display: none; }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- NAVBAR -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo"><a href="index.html">Electro<span>Som</span></a></div>
+            <div class="logo"><a href="#">Electro<span>Som</span></a></div>
 
             <div class="search-wrapper">
-                <input type="text" placeholder="Search ACs, TVs, Mobiles or Appliances...">
+                <input type="text" placeholder="Search for products, brands and more...">
                 <button><i class="fas fa-search"></i></button>
             </div>
 
             <div class="nav-actions">
+                <i class="far fa-user"></i>
+                <i class="far fa-heart"></i>
                 <div class="cart-icon">
-                    <i class="fas fa-shopping-basket"></i>
-                    <span class="count">0</span>
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="count">3</span>
                 </div>
             </div>
         </div>
     </nav>
 
-    <!-- SHOP -->
-    <div class="shop-wrapper container">
-
-        <!-- SIDEBAR -->
+    <div class="shop-container">
+        
         <aside class="sidebar">
-            <div class="filter-box">
-                <h3>Categories</h3>
-                <ul class="cat-list">
-                    <li class="active">All Products</li>
-                    <li>Air Conditioners</li>
-                    <li>Kitchen Appliances</li>
-                    <li>Smartphones</li>
-                    <li>Smart TVs</li>
-                    <li>Refrigerators</li>
-                </ul>
-            </div>
+            <h3>Categories</h3>
+            <ul class="cat-list">
+                <li class="active">All Products <i class="fas fa-chevron-right"></i></li>
+                <li><a href="../pages/phones.html"><i class="fas fa-mobile-alt"></i> Smartphones <span>(12)</span></li></a>
+                <li><a href="../pages/laptops.html"><i class="fas fa-laptop"></i> Laptops <span>(8)</span></li></a>
+                <li><a href="../pages/audio.html"><i class="fas fa-headphones"></i> Audio & Music <span>(15)</span></li></a>
+                <li><a href="../pages/watches.html"><i class="fas fa-clock"></i> Smart Watches <span>(6)</span></li></a>
+                <li><i class="fas fa-blender"><a href="../pages/kichen.html"></i> Kitchen Appliances <span>(10)</span></li></a>
+            </ul>
 
-            <div class="filter-box">
-                <h3>Price Range</h3>
-                <input type="range" class="price-slider">
-                <div class="price-tags">
+            <div class="price-filter">
+                <h3>Filter by Price</h3>
+                <input type="range" class="price-slider" min="10" max="3000">
+                <div class="price-inputs">
                     <span>$10</span>
-                    <span>$3000</span>
+                    <span>$3,000</span>
                 </div>
             </div>
         </aside>
 
-        <!-- MAIN CONTENT -->
         <main class="main-content">
-            <header class="shop-top-bar">
-                <h2>All Products <span>(48)</span></h2>
-                <select class="sort-dropdown">
-                    <option>Newest First</option>
+            <header class="shop-header">
+                <h2>Results for <span>"All Products"</span></h2>
+                <select class="sort-select">
+                    <option>Sort by: Newest</option>
                     <option>Price: Low to High</option>
+                    <option>Price: High to Low</option>
+                    <option>Most Popular</option>
                 </select>
             </header>
 
-            <!-- PRODUCTS GRID -->
-            <div class="compact-grid">
-
-                <div class="mini-card">
-                    <div class="img-area">
-                        <img src="/images/ac.jpg" alt="AC">
-                        <span class="tag-new">New</span>
+            <div class="product-grid">
+                
+                <div class="product-card">
+                    <div class="image-box">
+                        <span class="badge">New</span>
+                      <a href="../pages/laptops.html"><img src="../images/laptop_apple.png" alt="Laptop"></a>  
                     </div>
-                    <div class="card-info">
-                        <span class="sub-cat">Cooling</span>
-                        <h4>Split AC 1.5 Ton</h4>
-                        <div class="price-action">
-                            <span class="price">$450</span>
-                            <button class="add-btn"><i class="fas fa-plus"></i></button>
+                    <div class="product-info">
+                        <span class="category-tag">Laptops</span>
+                        <h4>MacBook Pro M3 Max - 14 inch</h4>
+                        <div class="footer-card">
+                            <span class="price-tag">$2,499</span>
+                            <button class="add-cart-btn"><i class="fas fa-plus"></i></button>
                         </div>
                     </div>
                 </div>
 
-                <div class="mini-card">
-                    <div class="img-area">
-                        <img src="/images/last.jpg" alt="Blender">
+                <div class="product-card" >
+                    <div class="image-box">
+                        <a href="../pages/phones.html"><img src="../images/smart_phones.png" alt="iPhone"></a>
                     </div>
-                    <div class="card-info">
-                        <span class="sub-cat">Kitchen</span>
-                        <h4>Electric Juice Maker</h4>
-                        <div class="price-action">
-                            <span class="price">$85</span>
-                            <button class="add-btn"><i class="fas fa-plus"></i></button>
+                    <div class="product-info">
+                        <span class="category-tag">Smartphones</span>
+                        <h4>iPhone 15 Pro Max Titanium</h4>
+                        <div class="footer-card">
+                            <span class="price-tag">$1,199</span>
+                            <button class="add-cart-btn"><i class="fas fa-plus"></i></button>
                         </div>
                     </div>
                 </div>
 
-                <div class="mini-card">
-                    <div class="img-area">
-                        <img src="/images/smart tv.avif" alt="Smart TV">
+                <div class="product-card">
+                    <div class="image-box">
+                        <img src="../images/sony.avif" alt="Headphones">
                     </div>
-                    <div class="card-info">
-                        <span class="sub-cat">Entertainment</span>
-                        <h4>Samsung 55&quot; 4K Smart TV</h4>
-                        <div class="price-action">
-                            <span class="price">$520</span>
-                            <button class="add-btn"><i class="fas fa-plus"></i></button>
+                    <div class="product-info">
+                        <span class="category-tag">Audio</span>
+                        <h4>Sony WH-1000XM5 Wireless</h4>
+                        <div class="footer-card">
+                            <span class="price-tag">$348</span>
+                            <button class="add-cart-btn"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+                        <div class="product-card">
+                    <div class="image-box">
+                        <img src="../images/iphon17pro.png" alt="Headphones">
+                    </div>
+                    <div class="product-info">
+                        <span class="category-tag">Apple</span>
+                        <h4>iPhone 17 Pro Max</h4>
+                        <div class="footer-card">
+                            <span class="price-tag">$1,299.00</span>
+                            <button class="add-cart-btn"><i class="fas fa-plus"></i></button>
                         </div>
                     </div>
                 </div>
 
-                <div class="mini-card">
-                    <div class="img-area">
-                        <img src="/images/iphon15pro.avif" alt="iPhone">
+                         <div class="product-card">
+                    <div class="image-box">
+                        <img src="../images/GalaxyS24Ultra.jpg" alt="Headphones">
                     </div>
-                    <div class="card-info">
-                        <span class="sub-cat">Mobiles</span>
-                        <h4>iPhone 15 Pro Max</h4>
-                        <div class="price-action">
-                            <span class="price">$1,299</span>
-                            <button class="add-btn"><i class="fas fa-plus"></i></button>
+                    <div class="product-info">
+                        <span class="category-tag">Samsung</span>
+                        <h4>Galaxy S24 Ultra</h4>
+                        <div class="footer-card">
+                            <span class="price-tag">$1,149.00</span>
+                            <button class="add-cart-btn"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
+                </div>
+                    <div class="product-card">
+                    <div class="image-box">
+                        <img src="../images/pixel 8.jpg" alt="Headphones">
+                    </div>
+                       <div class="product-info">
+                        <span class="category-tag">Google</span>
+                        <h4>Pixel 8 Pro</h4>
+                        <div class="footer-card">
+                            <span class="price-tag">$899.00</span>
+                            <button class="add-cart-btn"><i class="fas fa-plus"></i></button>
                         </div>
                     </div>
                 </div>
 
-                <div class="mini-card">
-                    <div class="img-area">
-                        <img src="/images/fridges.jpg" alt="Fridge">
-                    </div>
-                    <div class="card-info">
-                        <span class="sub-cat">Kitchen</span>
-                        <h4>Double Door Refrigerator</h4>
-                        <div class="price-action">
-                            <span class="price">$850</span>
-                            <button class="add-btn"><i class="fas fa-plus"></i></button>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="mini-card">
-                    <div class="img-area">
-                        <img src="/images/washing_mashine.jpg" alt="Washer">
-                    </div>
-                    <div class="card-info">
-                        <span class="sub-cat">Home Appliances</span>
-                        <h4>Front Load Washing Machine</h4>
-                        <div class="price-action">
-                            <span class="price">$390</span>
-                            <button class="add-btn"><i class="fas fa-plus"></i></button>
-                        </div>
-                    </div>
-                </div>
 
-            </div>
-        </main>
-    </div>
+
+                
+
+             
+
+
+              
+                
+                 
+
+                
+
+
+
+
+
+
+
+
 
 </body>
 </html>
